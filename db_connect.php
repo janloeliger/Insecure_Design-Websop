@@ -1,22 +1,10 @@
 <?php
 Class Database
 {
-    private $user ;
-    private $host;
-    private $pass ;
-    private $db;
-
-    public function __construct()
+    public static function connect()
     {
-        $this->user = "root";
-        $this->host = "localhost";
-        $this->pass = "";
-        $this->db = "db_blog";
-    }
-    public function connect()
-    {
-        $link = mysqli($this->user, $this->host, $this->pass, $this->db);
-        return $link;
+        $dsn = "mysql:dbname={insecure_shop_db};port={3306};ost:{localhost}";
+        return new PDO($dsn, "root", "");
     }
 }
 ?>

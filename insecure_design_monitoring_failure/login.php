@@ -16,7 +16,7 @@
         if($q->num_rows === 0) {
             echo "Falscher Nutzername oder Passwort";
         } else {
-            header('Location: http://localhost/Insecure_Design-Websop/insecure_design_monitoring_failure/adminpanel.php');
+            header('Location: adminpanel.php');
             die();
         }
     }

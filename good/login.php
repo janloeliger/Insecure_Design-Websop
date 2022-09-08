@@ -11,18 +11,13 @@
     if(isset($_GET['name'])) {
         // Create connection
         $conn = Database::connect();
-        $query = "SELECT id FROM users where username=" .$_GET['name']. " AND password=" .$_GET['pwd'];
-        $q = $conn->query($query);
-        $q->setFetchMode(\PDO::FETCH_ASSOC);
+        $q = $conn->query("SELECT id FROM users WHERE username = '" .$_GET['name']. "' AND password = '" .$_GET['pwd']. "'");
         // Connect
-        while ($spot = $q->fetch(\PDO::FETCH_ASSOC)) {
-            $spot[] = new Spot($spot);
-        }
-        if(count($spot) == 0) {
+        if($q->num_rows === 0) {
             echo "Falscher Nutzername oder Passwort";
         } else {
-            header('Location: '.URL.'adminpanel.php');
-            exit();
+            header('Location: http://localhost/Insecure_Design-Websop/good/adminpanel.php');
+            die();
         }
     }
 ?>
